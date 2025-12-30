@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -32,6 +33,20 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function kantor(): BelongsTo
+    {
+        return $this->belongsTo(Kantor::class, 'idKantor');
+    }
+
+    public function jabatan(): BelongsTo
+    {
+        return $this->belongsTo(Jabatan::class, 'idJabatan');
+    }
+
+    public function regu(): BelongsTo
+    {
+        return $this->belongsTo(Regu::class, 'idRegu');
+    }
 
     /**
      * Get the attributes that should be cast.

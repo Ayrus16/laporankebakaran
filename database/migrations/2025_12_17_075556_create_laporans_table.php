@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->double('latitude');
             $table->double('longitude');
-            $table->string('status');
+            $table->string('status')->default("diterima");
             $table->timestamps();
         });
     }

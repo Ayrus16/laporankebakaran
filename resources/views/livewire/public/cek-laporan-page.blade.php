@@ -16,7 +16,7 @@
         </form>
     </x-filament::section>
 
-    <x-filament::section>
+    <x-filament::section>   
         {{ $this->table }}
     </x-filament::section>
 </div>
