@@ -13,7 +13,7 @@ class KantorPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class KantorPolicy
      */
     public function view(User $user, Kantor $kantor): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class KantorPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class KantorPolicy
      */
     public function update(User $user, Kantor $kantor): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class KantorPolicy
      */
     public function delete(User $user, Kantor $kantor): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class KantorPolicy
      */
     public function restore(User $user, Kantor $kantor): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -61,6 +61,6 @@ class KantorPolicy
      */
     public function forceDelete(User $user, Kantor $kantor): bool
     {
-        return false;
+        return true;
     }
 }
