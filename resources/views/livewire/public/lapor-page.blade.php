@@ -2,7 +2,7 @@
     
 
     <div class="w-full max-w-md border rounded-md p-6">
-        <form wire:submit="submit" class="space-y-4">
+        <form wire:submit="submit" class="space-y-4" enctype="multipart/form-data">
             {{ $this->form }}
 
             <button type="submit"

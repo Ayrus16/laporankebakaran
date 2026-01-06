@@ -11,7 +11,6 @@ class Kelurahan extends Model
     /** @use HasFactory<\Database\Factories\KelurahanFactory> */
     use HasFactory;
 
-    protected $table = 'kelurahan';
 
     protected $fillable = [
         'namaKelurahan',

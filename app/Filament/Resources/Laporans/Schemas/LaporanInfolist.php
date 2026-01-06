@@ -37,11 +37,10 @@ class LaporanInfolist
                 ->label('Status Laporan')
                 ->badge()
                 ->color(fn (string $state): string => match ($state) {
-                    'diterima' => 'gray',
-                    'penanganan' => 'warning',
-                    'selesai' => 'success',
-                    'ditolak' => 'danger',
-                    default => 'gray',
+                        'diterima' => 'success',
+                        'penanganan' => 'warning',
+                        'selesai' => 'gray',
+                        'ditolak' => 'danger',
                 }),
 
             TextEntry::make('created_at')->label('Dilaporkan Pada')->dateTime(),
@@ -53,6 +52,8 @@ class LaporanInfolist
                 ->schema([
                     SpatieMediaLibraryImageEntry::make('fotoLaporan')
                         ->label('Foto Laporan')
+                        ->collection('fotoLaporan')
+                        ->disk('public')
                         ->imageHeight(500)
                         ->square(false)
                         ->stacked(),

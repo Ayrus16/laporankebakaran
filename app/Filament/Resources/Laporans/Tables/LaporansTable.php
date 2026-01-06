@@ -15,6 +15,7 @@ class LaporansTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('namaPelapor')
                     ->label('Nama Pelapor')
@@ -25,13 +26,15 @@ class LaporansTable
                 TextColumn::make('alamat')
                     ->placeholder('Alamat Kejadian')
                     ->searchable(),
-                SpatieMediaLibraryImageColumn::make('fotoLaporan'),
+                SpatieMediaLibraryImageColumn::make('fotoLaporan')
+                ->collection('fotoLaporan')
+                ->disk('public'),
                 TextColumn::make('status')
                 ->badge()
                 ->color(fn (string $state): string => match ($state) {
-                        'diterima' => 'gray',
+                        'diterima' => 'success',
                         'penanganan' => 'warning',
-                        'selesai' => 'success',
+                        'selesai' => 'gray',
                         'ditolak' => 'danger',
                     })                    
                 ->searchable()

@@ -15,17 +15,20 @@ return new class extends Migration
             
             $table->foreignId('idKantor')
                 ->constrained('kantors')
+                ->nullable()
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
 
             $table->foreignId('idJabatan')
                 ->constrained('jabatans')
                 ->restrictOnDelete()
+                ->nullable()
                 ->cascadeOnUpdate();
 
             $table->foreignId('idRegu')
                 ->constrained('regus')
                 ->restrictOnDelete()
+                ->nullable()
                 ->cascadeOnUpdate();
 
             $table->string('noteleponPetugas', 30);

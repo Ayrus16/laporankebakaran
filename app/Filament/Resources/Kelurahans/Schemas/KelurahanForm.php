@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Kelurahans\Schemas;
 
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class KelurahanForm
@@ -10,7 +11,8 @@ class KelurahanForm
     {
         return $schema
             ->components([
-                //
+                TextInput::make('namaKelurahan')
+                    ->required(),
             ]);
     }
 }

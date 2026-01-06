@@ -5,20 +5,19 @@ namespace App\Livewire\Public;
 use App\Models\Laporan;
 use Dotswan\MapPicker\Fields\Map;
 use Filament\Schemas\Components\Section; 
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
-use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+
 
 class LaporPage extends Component implements HasSchemas
 {
-    use InteractsWithSchemas;
+    use InteractsWithSchemas,WithFileUploads;
 
     public ?array $data = [];
 
@@ -48,8 +47,10 @@ class LaporPage extends Component implements HasSchemas
                         ->label('Alamat Kejadian'),
                     
                     
-                    SpatieMediaLibraryFileUpload::make('fotoLaporan') 
-                    ->multiple(),
+                    SpatieMediaLibraryFileUpload::make('fotoLaporan')
+                        ->collection('fotoLaporan')
+                        ->disk('public')
+                        ->multiple(),
 
                         Map::make('location')
                             ->label('Location')
@@ -82,13 +83,15 @@ class LaporPage extends Component implements HasSchemas
                                 ]);
                             }),
 
+                        TextInput::make('latitude')
+                        ->required()->readOnly()->dehydrated(),
+                        TextInput::make('longitude')
+                        ->required()->readOnly()->dehydrated(),
+
 
                         ]),
 
-                        TextInput::make('latitude')
-                        ->required()->readOnly()->dehydrated()->hidden(),
-                        TextInput::make('longitude')
-                        ->required()->readOnly()->dehydrated()->hidden(),
+                        
                     ])
                     ->statePath('data')
                     ->model(Laporan::class);
@@ -107,10 +110,19 @@ class LaporPage extends Component implements HasSchemas
             'status'      => 'diterima',
         ]);
 
+        $files = $state['fotoLaporan'] ?? [];
+
+        foreach ((array) $files as $file) {
+            $laporan
+                ->addMedia($file) 
+                ->toMediaCollection('fotoLaporan', 'public');
+        }
+
         $this->form->model($laporan)->saveRelationships();
 
         session()->flash('success', 'Laporan berhasil dikirim. Silakan cek laporanmu.');
 
+        
         // redirect ke home 
         return redirect()->to('/');
     }

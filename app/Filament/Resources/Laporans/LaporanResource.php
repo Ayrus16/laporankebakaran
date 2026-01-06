@@ -20,11 +20,25 @@ class LaporanResource extends Resource
 {
     protected static ?string $model = Laporan::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocument;
+
+    
+    
 
     public static function form(Schema $schema): Schema
     {
         return LaporanForm::configure($schema);
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return (string) static::getModel()::query()
+            ->where('status', 'diterima')
+            ->count();
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return 'success';
     }
 
     public static function infolist(Schema $schema): Schema

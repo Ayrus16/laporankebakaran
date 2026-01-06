@@ -9,22 +9,29 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Laporan extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
+
     protected $guarded = ['id'];
 
     public function kejadian(): HasOne
     {
         return $this->hasOne(Kejadian::class, 'idLaporan');
     }
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('fotoLaporan')->useDisk('public');
+    }
 
-public function getLocationAttribute(): array
-{
-    return [
-        'lat' => $this->latitude !== null ? (float) $this->latitude : -6.914744,
-        'lng' => $this->longitude !== null ? (float) $this->longitude : 107.609810,
-    ];
-}
+    public function getLocationAttribute(): array
+    {
+        return [
+            'lat' => $this->latitude !== null ? (float) $this->latitude : -6.914744,
+            'lng' => $this->longitude !== null ? (float) $this->longitude : 107.609810,
+        ];
+    }
 
-    use InteractsWithMedia;
+    
 
 
 }

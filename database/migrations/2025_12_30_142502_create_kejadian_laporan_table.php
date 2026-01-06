@@ -13,7 +13,21 @@ return new class extends Migration
     {
         Schema::create('kejadian_laporan', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('kejadian_id')
+                ->constrained('kejadians')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+
+            $table->foreignId('laporan_id')
+                ->constrained('laporans')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+
             $table->timestamps();
+
+            // cegah dobel relasi kejadian-laporan
+            $table->unique(['kejadian_id', 'laporan_id']);
         });
     }
 

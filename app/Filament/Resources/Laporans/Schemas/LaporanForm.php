@@ -20,7 +20,6 @@ class LaporanForm
             ->components([
                 TextInput::make('namaPelapor')
                     ->label('Nama Pelapor')
-                    ->AlphaNum()
                     ->required(),
                 TextInput::make('tlpPelapor')
                     ->label('Nomor Pelapor')
@@ -37,13 +36,16 @@ class LaporanForm
                 
                 Select::make('status')
                 ->options([
-                    'diterima' => 'Di terima',
+                    'diterima' => 'Diterima',
                     'penanganan' => 'Penanganan',
                     'selesai' => 'Selesai',
-                    'ditolak' => 'Di Tolak',
+                    'ditolak' => 'Ditolak',
                 ]),
 
-                SpatieMediaLibraryFileUpload::make('fotoLaporan') 
+
+                SpatieMediaLibraryFileUpload::make('fotoLaporan')
+                ->collection('fotoLaporan')
+                ->disk('public')
                 ->multiple(),
 
                 Map::make('location')
