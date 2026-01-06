@@ -6,7 +6,7 @@
             {{ $this->form }}
 
             <button type="submit"
-                    class="w-full rounded-md bg-gray-900 text-white py-2 text-sm font-semibold">
+                    class="w-full rounded-md py-2 text-sm font-semibold text-[#0B133B] bg-[#C8892A]">
                 Laporkan Kejadian!
             </button>
         </form>

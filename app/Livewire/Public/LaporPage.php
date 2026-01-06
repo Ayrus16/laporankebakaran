@@ -25,7 +25,7 @@ class LaporPage extends Component implements HasSchemas
     public function mount(): void
     {
         $this->form->fill([
-            'location' => ['lat' => -6.914744, 'lng' => 107.609810], // Bandung
+            'location' => ['lat' => -6.914744, 'lng' => 107.609810], // Default Bandung
         ]);
     }
 
@@ -86,9 +86,9 @@ class LaporPage extends Component implements HasSchemas
                         ]),
 
                         TextInput::make('latitude')
-                        ->required()->readOnly()->dehydrated(),
+                        ->required()->readOnly()->dehydrated()->hidden(),
                         TextInput::make('longitude')
-                        ->required()->readOnly()->dehydrated(),
+                        ->required()->readOnly()->dehydrated()->hidden(),
                     ])
                     ->statePath('data')
                     ->model(Laporan::class);
@@ -107,21 +107,18 @@ class LaporPage extends Component implements HasSchemas
             'status'      => 'diterima',
         ]);
 
-        // ✅ penting: supaya SpatieMediaLibraryFileUpload ikut tersimpan
         $this->form->model($laporan)->saveRelationships();
 
-        // Kalau tetap mau ada info setelah redirect, pakai flash session
         session()->flash('success', 'Laporan berhasil dikirim. Silakan cek laporanmu.');
 
-        // ✅ redirect ke home (pilih salah satu)
-        return redirect()->to('/');               // kalau home kamu "/"
-        // return redirect()->route('home');      // kalau kamu punya route name "home"
+        // redirect ke home 
+        return redirect()->to('/');
     }
 
     public function render()
     {
         return view('livewire.public.lapor-page')
-        ->layout('components.layouts.public', ['title' => '/lapor']);
+        ->layout('components.layouts.public', ['title' => 'lapor Kejadian']);
     }
 
     public function refresh(): void

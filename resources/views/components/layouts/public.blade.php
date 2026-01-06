@@ -16,13 +16,13 @@
     {{-- Navbar --}}
     <header class="sticky top-0 z-50 bg-[#030B2A]">
         <div class="mx-auto max-w-6xl px-4 h-16 grid grid-cols-[1fr_auto_1fr] items-center">
-            {{-- Left: Logo --}}
+
             <a href="{{ route('public.home') }}"
                class="justify-self-start text-white font-bold text-lg tracking-wide hover:opacity-90">
-                AppLapor
+                Lapor Kebakaran
             </a>
 
-            {{-- Center menu --}}
+            
             <nav class="justify-self-center flex items-center gap-2 sm:gap-3 text-sm">
                 <a href="{{ route('public.lapor') }}"
                    class="px-3 py-2 rounded-lg font-semibold transition
@@ -41,19 +41,19 @@
                 </a>
             </nav>
 
-            {{-- Right: Button (ke admin) --}}
-            <div class="justify-self-end">
+
+            {{-- <div class="justify-self-end">
                 <a href="/admin"
                    class="inline-flex items-center rounded-lg px-3 py-2 text-xs font-semibold
                           text-white border border-white/20 hover:bg-white/10 transition">
                     Admin
                 </a>
-            </div>
+            </div> --}}
         </div>
     </header>
 
     {{-- Content --}}
-    <main class="mx-auto max-w-6xl px-4 py-10">
+    <main class="min-h-[calc(100vh-4rem)] bg-[#030B2A]">
         {{ $slot }}
     </main>
 
