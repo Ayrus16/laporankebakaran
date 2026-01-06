@@ -14,10 +14,14 @@ class Laporan extends Model implements HasMedia
 
     protected $guarded = ['id'];
 
-    public function kejadian(): HasOne
+
+
+    public function kejadian()
     {
-        return $this->hasOne(Kejadian::class, 'idLaporan');
+        return $this->belongsToMany(Kejadian::class);
     }
+
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('fotoLaporan')->useDisk('public');
