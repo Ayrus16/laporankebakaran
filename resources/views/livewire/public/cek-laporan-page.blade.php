@@ -11,7 +11,7 @@
             <div class="flex justify-end">
                 <x-filament::button type="submit" icon="heroicon-m-magnifying-glass">
                     Cek Laporan
-                </x-filament::button>
+                </x-filament::button>   
             </div>
         </form>
     </x-filament::section>
