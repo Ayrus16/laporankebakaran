@@ -16,7 +16,7 @@ class Laporan extends Model implements HasMedia
 
 
 
-    public function kejadian()
+    public function kejadians()
     {
         return $this->belongsToMany(Kejadian::class);
     }

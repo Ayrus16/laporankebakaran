@@ -11,12 +11,16 @@ class Kantor extends Model
     /** @use HasFactory<\Database\Factories\KantorFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'namaKantor',
-    ];
+    protected $guarded = ['id'];
 
     public function petugas(): HasMany
     {
         return $this->hasMany(User::class, 'idKantor');
     }
+
+    public function kejadians()
+    {
+        return $this->hasMany(Kejadian::class);
+    }
+
 }

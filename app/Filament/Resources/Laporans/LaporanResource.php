@@ -6,6 +6,7 @@ use App\Filament\Resources\Laporans\Pages\CreateLaporan;
 use App\Filament\Resources\Laporans\Pages\EditLaporan;
 use App\Filament\Resources\Laporans\Pages\ListLaporans;
 use App\Filament\Resources\Laporans\Pages\ViewLaporan;
+use App\Filament\Resources\Laporans\RelationManagers\KejadiansRelationManager;
 use App\Filament\Resources\Laporans\Schemas\LaporanForm;
 use App\Filament\Resources\Laporans\Schemas\LaporanInfolist;
 use App\Filament\Resources\Laporans\Tables\LaporansTable;
@@ -22,7 +23,7 @@ class LaporanResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocument;
 
-    
+
     
 
     public static function form(Schema $schema): Schema
@@ -54,7 +55,7 @@ class LaporanResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            KejadiansRelationManager::class,
         ];
     }
 

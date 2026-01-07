@@ -28,16 +28,10 @@ return new class extends Migration
                 ->constrained('laporans')
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
-
-            $table->foreignId('idKorban')
+                
+            $table->foreignId('kantor_id')
                 ->nullable()
-                ->constrained('korbans')
-                ->nullOnDelete()
-                ->cascadeOnUpdate();
-
-            $table->foreignId('idRegu')
-                ->nullable()
-                ->constrained('regus')
+                ->constrained('kantors')
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
 

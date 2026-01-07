@@ -15,21 +15,11 @@ class KejadiansTable
     {
         return $table
             ->columns([
-                TextColumn::make('idKelurahan')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('idKecamatan')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('idLaporan')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('idKorban')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('idRegu')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('kantor.namaKantor')
+                    ->label('Kantor Terdekat')
+                    ->placeholder('-')
+                    ->searchable(),
+
                 TextColumn::make('LokasiKejadian')
                     ->searchable(),
                 TextColumn::make('luasTerbakar')
@@ -37,15 +27,6 @@ class KejadiansTable
                     ->sortable(),
                 TextColumn::make('tanggalKejadian')
                     ->date()
-                    ->sortable(),
-                TextColumn::make('waktuPenanganan')
-                    ->dateTime()
-                    ->sortable(),
-                TextColumn::make('waktuSelesai')
-                    ->dateTime()
-                    ->sortable(),
-                TextColumn::make('tafsiranKerugian')
-                    ->numeric()
                     ->sortable(),
                 TextColumn::make('fotoKejadian')
                     ->searchable(),

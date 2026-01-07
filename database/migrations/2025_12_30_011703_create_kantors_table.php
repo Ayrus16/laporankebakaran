@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('namaKantor');
             $table->string('alamat');
+            $table->double('latitude');
+            $table->double('longitude');
         });
     }
 

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Regu extends Model
 {
@@ -20,8 +22,10 @@ class Regu extends Model
         return $this->hasMany(User::class, 'idRegu');
     }
 
-    public function kejadian(): HasMany
+    public function kejadians(): BelongsToMany
     {
-        return $this->hasMany(Kejadian::class, 'idRegu');
+        return $this->belongsToMany(Kejadian::class, 'kejadian_regu')
+            ->withTimestamps();
     }
+
 }

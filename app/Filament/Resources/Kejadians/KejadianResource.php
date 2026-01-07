@@ -6,6 +6,8 @@ use App\Filament\Resources\Kejadians\Pages\CreateKejadian;
 use App\Filament\Resources\Kejadians\Pages\EditKejadian;
 use App\Filament\Resources\Kejadians\Pages\ListKejadians;
 use App\Filament\Resources\Kejadians\Pages\ViewKejadian;
+use App\Filament\Resources\Kejadians\RelationManagers\KorbansRelationManager;
+use App\Filament\Resources\Kejadians\RelationManagers\RegusRelationManager;
 use App\Filament\Resources\Kejadians\Schemas\KejadianForm;
 use App\Filament\Resources\Kejadians\Schemas\KejadianInfolist;
 use App\Filament\Resources\Kejadians\Tables\KejadiansTable;
@@ -45,7 +47,8 @@ class KejadianResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RegusRelationManager::class,
+            KorbansRelationManager::class,
         ];
     }
 

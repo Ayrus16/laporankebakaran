@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Kejadian extends Model
+class Kejadian extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     protected $guarded = ['id'];
 
     public function laporan(){
@@ -23,13 +28,18 @@ class Kejadian extends Model
         return $this->belongsTo(Kecamatan::class, 'idKecamatan');
     }
 
-    public function korban(): BelongsTo
+    public function kantor()
     {
-        return $this->belongsTo(Korban::class, 'idKorban');
+        return $this->belongsTo(Kantor::class);
     }
 
-    public function regu(): BelongsTo
+    public function regus(): BelongsToMany
     {
-        return $this->belongsTo(Regu::class, 'idRegu');
+        return $this->belongsToMany(Regu::class, 'kejadian_regu');
+    }
+
+    public function korbans(): HasMany
+    {
+        return $this->hasMany(Korban::class, 'kejadian_id');
     }
 }
