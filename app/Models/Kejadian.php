@@ -14,7 +14,7 @@ class Kejadian extends Model implements HasMedia
     use InteractsWithMedia;
     protected $guarded = ['id'];
 
-    public function laporan(){
+    public function laporans(){
         return $this->belongsToMany(Laporan::class);
     }
 
