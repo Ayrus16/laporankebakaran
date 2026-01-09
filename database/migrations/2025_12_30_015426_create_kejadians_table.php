@@ -23,11 +23,6 @@ return new class extends Migration
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->foreignId('idLaporan')
-                ->nullable()
-                ->constrained('laporans')
-                ->nullOnDelete()
-                ->cascadeOnUpdate();
                 
             $table->foreignId('kantor_id')
                 ->nullable()

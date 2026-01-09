@@ -44,6 +44,7 @@ class KantorSeeder extends Seeder
                  'latitude' => -6.9386401892386065,
                  'longitude' => 107.67261383301789
             ],
+            
         ]);
     }
 }

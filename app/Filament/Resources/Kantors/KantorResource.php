@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Kantors;
 use App\Filament\Resources\Kantors\Pages\CreateKantor;
 use App\Filament\Resources\Kantors\Pages\EditKantor;
 use App\Filament\Resources\Kantors\Pages\ListKantors;
+use App\Filament\Resources\Kantors\RelationManagers\RegusRelationManager;
 use App\Filament\Resources\Kantors\Schemas\KantorForm;
 use App\Filament\Resources\Kantors\Tables\KantorsTable;
 use App\Models\Kantor;
@@ -38,7 +39,7 @@ class KantorResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RegusRelationManager::class,
         ];
     }
 

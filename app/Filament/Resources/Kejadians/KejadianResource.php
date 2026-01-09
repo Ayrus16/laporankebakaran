@@ -18,6 +18,8 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class KejadianResource extends Resource
 {
@@ -60,5 +62,18 @@ class KejadianResource extends Resource
             'view' => ViewKejadian::route('/{record}'),
             'edit' => EditKejadian::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+
+        $user = auth()->user();
+
+        if ($user && ! $user->hasRole('admin')) {
+            $query->where('kantor_id', $user->idKantor);
+        }
+
+        return $query;
     }
 }

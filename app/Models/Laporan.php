@@ -11,10 +11,7 @@ class Laporan extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-
     protected $guarded = ['id'];
-
-
 
     public function kejadians()
     {
@@ -36,6 +33,4 @@ class Laporan extends Model implements HasMedia
     }
 
     
-
-
 }

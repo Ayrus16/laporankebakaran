@@ -13,7 +13,7 @@ class KelurahanPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasRole('admin') ? true : false;
     }
 
     /**
@@ -21,7 +21,7 @@ class KelurahanPolicy
      */
     public function view(User $user, Kelurahan $kelurahan): bool
     {
-        return true;
+        return $user->hasRole('admin') ? true : false;
     }
 
     /**
@@ -29,7 +29,7 @@ class KelurahanPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasRole('admin') ? true : false;
     }
 
     /**
@@ -37,7 +37,7 @@ class KelurahanPolicy
      */
     public function update(User $user, Kelurahan $kelurahan): bool
     {
-        return true;
+        return $user->hasRole('admin') ? true : false;
     }
 
     /**
@@ -45,7 +45,7 @@ class KelurahanPolicy
      */
     public function delete(User $user, Kelurahan $kelurahan): bool
     {
-        return true;
+        return $user->hasRole('admin') ? true : false;
     }
 
     /**
@@ -53,7 +53,7 @@ class KelurahanPolicy
      */
     public function restore(User $user, Kelurahan $kelurahan): bool
     {
-        return true;
+        return $user->hasRole('admin') ? true : false;
     }
 
     /**
@@ -61,6 +61,6 @@ class KelurahanPolicy
      */
     public function forceDelete(User $user, Kelurahan $kelurahan): bool
     {
-        return true;
+        return $user->hasRole('admin') ? true : false;
     }
 }

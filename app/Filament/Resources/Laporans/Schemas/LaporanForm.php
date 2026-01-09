@@ -2,15 +2,11 @@
 
 namespace App\Filament\Resources\Laporans\Schemas;
 
-use chillerlan\QRCode\Data\AlphaNum;
 use Dotswan\MapPicker\Fields\Map;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Utilities\Set;
-use Filament\Tables\Columns\SelectColumn;
 
 class LaporanForm
 {
@@ -68,28 +64,7 @@ class LaporanForm
                         'lng' => $record?->longitude,
                     ]);
                 }),
-
-                // OTOMATIS GEOLOCATION
-                // Map::make('location')
-                // ->label('Location')
-                // ->columnSpanFull()
-
-                // ->liveLocation(true, false, 10000)
-                // ->showMyLocationButton(false)
-
-                // ->draggable(false)
-                // ->clickable(false)
-
-                // ->dehydrated(false)
-
-                // ->afterStateUpdated(function (Set $set, ?array $state): void {
-                //     $set('latitude', $state['lat'] ?? null);
-                //     $set('longitude', $state['lng'] ?? null);
-                // })
-
-                
-                
-                
+              
             ]);
     }
 }

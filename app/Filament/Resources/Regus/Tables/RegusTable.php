@@ -16,6 +16,8 @@ class RegusTable
             ->columns([
                 TextColumn::make('namaRegu')
                     ->searchable(),
+                TextColumn::make('kantor.namaKantor') 
+                    ->label('Kantor'),
             ])
             ->filters([
                 //

@@ -22,5 +22,10 @@ class Kantor extends Model
     {
         return $this->hasMany(Kejadian::class);
     }
+    
+    public function regus(): HasMany
+    {
+        return $this->hasMany(Regu::class, 'idKantor');
+    }
 
 }

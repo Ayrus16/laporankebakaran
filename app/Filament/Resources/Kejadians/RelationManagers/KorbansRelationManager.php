@@ -11,6 +11,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class KorbansRelationManager extends RelationManager
@@ -26,11 +27,11 @@ class KorbansRelationManager extends RelationManager
                 ->maxLength(16)
                 ->required(),
 
-            TextInput::make('nama_lengkap')
+            TextInput::make('namaLengkap')
                 ->label('Nama Lengkap')
                 ->required(),
 
-            Select::make('jenis_kelamin')
+            Select::make('jenisKelamin')
                 ->label('Jenis Kelamin')
                 ->options([
                     'L' => 'Laki-laki',
@@ -62,17 +63,17 @@ class KorbansRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('nama_lengkap')
+            ->recordTitleAttribute('namaLengkap')
             ->columns([
-                Tables\Columns\TextColumn::make('nik')
+                TextColumn::make('nik')
                     ->label('NIK')
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('nama_lengkap')
+                TextColumn::make('namaLengkap')
                     ->label('Nama')
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('status')
+                TextColumn::make('status')
                     ->label('Status')
                     ->badge(),
             ])
