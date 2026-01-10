@@ -23,9 +23,9 @@ class UsersTable
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
-                TextColumn::make('kantor.namaKantor') // ganti sesuai kolom di tabel kantors
+                TextColumn::make('kantor.namaKantor') 
                     ->label('Kantor'),
-                TextColumn::make('regu.namaRegu') // ganti sesuai kolom di tabel kantors
+                TextColumn::make('regu.namaRegu') 
                     ->label('Kantor'),
 
 

@@ -24,7 +24,7 @@
 
             
             <nav class="justify-self-center flex items-center gap-2 sm:gap-3 text-sm">
-                <a href="{{ route('public.lapor') }}"
+                    <a href="{{ route('public.lapor') }}"
                    class="px-3 py-2 rounded-lg font-semibold transition
                           {{ request()->routeIs('public.lapor')
                                 ? 'text-white bg-white/10'
@@ -33,7 +33,7 @@
                 </a>
 
                 <a href="{{ route('public.cek') }}"
-                   class="px-3 py-2 rounded-lg font-semibold transition
+                   class="px-3 py-2 rounded-lg font-Dsemibold transition
                           {{ request()->routeIs('public.cek')
                                 ? 'text-white bg-white/10'
                                 : 'text-white/70 hover:text-white hover:bg-white/10' }}">

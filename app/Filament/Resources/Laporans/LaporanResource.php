@@ -22,9 +22,7 @@ class LaporanResource extends Resource
     protected static ?string $model = Laporan::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocument;
-
-
-    
+   
 
     public static function form(Schema $schema): Schema
     {

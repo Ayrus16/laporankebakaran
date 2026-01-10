@@ -67,7 +67,7 @@ class RegusRelationManager extends RelationManager
 
                                 return Regu::query()
                                     ->where('idKantor', $idKantor)
-                                    ->whereNotIn('id', $attachedIds) // <- kunci: hide yang sudah attach
+                                    ->whereNotIn('id', $attachedIds) 
                                     ->orderBy('namaRegu')
                                     ->pluck('namaRegu', 'id')
                                     ->all();

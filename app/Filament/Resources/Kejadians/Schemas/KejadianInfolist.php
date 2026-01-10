@@ -32,7 +32,7 @@ class KejadianInfolist
                                 ->columns(2)
                                 ->columnSpanFull()
                                 ->schema([
-                                    SpatieMediaLibraryImageEntry::make('fotoLaporan')
+                                    SpatieMediaLibraryImageEntry::make('fotoKejadian')
                                         ->label('Foto Laporan')
                                         ->collection('fotoLaporan')
                                         ->disk('public')

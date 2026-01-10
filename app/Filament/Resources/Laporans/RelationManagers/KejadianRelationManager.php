@@ -42,7 +42,7 @@ class KejadiansRelationManager extends RelationManager
                     ->dateTime(),
             ])
             ->headerActions([
-                // ✅ "YA" -> attach kejadian existing
+                //"YA" -> attach kejadian existing
                 AttachAction::make()
                     ->label('Ya, pilih kejadian terkait')
                     ->preloadRecordSelect()
@@ -59,7 +59,7 @@ class KejadiansRelationManager extends RelationManager
                             ->send();
                     }),
 
-                // ✅ "TIDAK" -> buat kejadian baru dari laporan lalu attach
+                //"TIDAK" -> buat kejadian baru dari laporan lalu attach
                 Action::make('buatKejadianDariLaporan')
                     ->label('Tidak, buat kejadian baru')
                     ->color('success')
