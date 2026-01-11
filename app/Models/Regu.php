@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Regu extends Model
 {
-    /** @use HasFactory<\Database\Factories\ReguFactory> */
     use HasFactory;
 
         public $timestamps = false;

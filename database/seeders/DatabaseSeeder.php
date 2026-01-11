@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             KantorSeeder::class,
             ReguSeeder::class,
             UserSeeder::class,
+            KecamatanKelurahanSeeder::class,
         ]);
     }
 }

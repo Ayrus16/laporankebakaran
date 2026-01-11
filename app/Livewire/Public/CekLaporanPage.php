@@ -48,11 +48,12 @@ class CekLaporanPage extends Component implements HasForms, HasTable, HasActions
 
             TextInput::make('tlpPelapor')
                 ->label('Nomor Telepon')
-                ->tel()
+                ->numeric()
+                ->prefix('+62')
                 ->required()
                 ->minLength(9)
                 ->maxLength(15)
-                ->placeholder('08xxxxxxxxxx'),
+                ->placeholder('8xxxxxxxxxx'),
         ]);
 }
 
@@ -89,6 +90,7 @@ class CekLaporanPage extends Component implements HasForms, HasTable, HasActions
     {
         return $table
             ->query(fn () => $this->laporanQuery())
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('namaPelapor')
                     ->label('Nama Pelapor')

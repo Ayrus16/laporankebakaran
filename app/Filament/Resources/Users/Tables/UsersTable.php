@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class UsersTable
@@ -26,12 +27,16 @@ class UsersTable
                 TextColumn::make('kantor.namaKantor') 
                     ->label('Kantor'),
                 TextColumn::make('regu.namaRegu') 
-                    ->label('Kantor'),
+                    ->label('Regu'),
 
 
             ])
             ->filters([
-                //
+                 SelectFilter::make('kantor_id') 
+                    ->label('Kantor')
+                    ->relationship('kantor', 'namaKantor')
+                    ->searchable()
+                    ->preload(),
             ])
             ->recordActions([
                 ViewAction::make(),

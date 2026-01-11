@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Support\Facades\DB;
+
 
 class Kejadian extends Model implements HasMedia
 {
@@ -41,5 +43,20 @@ class Kejadian extends Model implements HasMedia
     public function korbans(): HasMany
     {
         return $this->hasMany(Korban::class, 'kejadian_id');
+    }
+
+    protected static function booted(): void
+    {
+        static::updated(function (self $kejadian) {
+            if (! $kejadian->wasChanged('status')) {
+                return;
+            }
+
+            DB::transaction(function () use ($kejadian) {
+                $kejadian->laporans()->update([
+                    'status' => $kejadian->status,
+                ]);
+            });
+        });
     }
 }

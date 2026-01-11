@@ -11,6 +11,7 @@ use Filament\Actions\DetachBulkAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -28,16 +29,17 @@ class KejadiansRelationManager extends RelationManager
     {
         return $table
             ->recordTitleAttribute('LokasiKejadian')
+            ->defaultSort('created_at', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('LokasiKejadian')
+                TextColumn::make('LokasiKejadian')
                     ->label('Lokasi')
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('tanggalKejadian')
+                TextColumn::make('tanggalKejadian')
                     ->label('Tanggal')
                     ->date(),
 
-                Tables\Columns\TextColumn::make('waktuSelesai')
+                TextColumn::make('waktuSelesai')
                     ->label('Selesai')
                     ->dateTime(),
             ])
@@ -68,7 +70,6 @@ class KejadiansRelationManager extends RelationManager
                         $laporan = $this->getOwnerRecord();
 
                         $kejadian = Kejadian::query()->create([
-                            // Pastikan field ini valid (kalau tidak ada di Laporan, akan error)
                             'idKecamatan'    => $laporan->idKecamatan,
                             'idKelurahan'    => $laporan->idKelurahan,
                             'LokasiKejadian' => $laporan->alamat,

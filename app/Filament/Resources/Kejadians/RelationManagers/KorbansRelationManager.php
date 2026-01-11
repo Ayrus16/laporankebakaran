@@ -51,7 +51,7 @@ class KorbansRelationManager extends RelationManager
                     'luka' => 'Luka',
                     'meninggal' => 'Meninggal',
                 ])
-                ->nullable(),
+                ->required(),
 
             Textarea::make('keterangan')
                 ->label('Keterangan')

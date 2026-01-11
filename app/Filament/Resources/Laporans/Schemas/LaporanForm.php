@@ -8,6 +8,8 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
+use App\Models\Laporan;
+
 class LaporanForm
 {
     public static function configure(Schema $schema): Schema
@@ -31,16 +33,26 @@ class LaporanForm
                     ->required()->readOnly(),
                 
                 Select::make('status')
-                ->options([
-                    'diterima' => 'Diterima',
-                    'penanganan' => 'Penanganan',
-                    'selesai' => 'Selesai',
-                    'ditolak' => 'Ditolak',
-                ]),
+                    ->options([
+                        'diterima'    => 'Diterima',
+                        'penanganan'  => 'Penanganan',
+                        'selesai'     => 'Selesai',
+                        'ditolak'     => 'Ditolak',
+                    ])
+                    ->required()
+                    ->disabled(function (?Laporan $record): bool {
+                        return $record?->kejadians()->exists() ?? false;
+                    })
+                    ->helperText(function (?Laporan $record): ?string {
+                        return ($record?->kejadians()->exists() ?? false)
+                            ? 'Laporan Sudah Memiliki Kejadian'
+                            : null;
+                    }),
 
 
                 SpatieMediaLibraryFileUpload::make('fotoLaporan')
                 ->collection('fotoLaporan')
+                ->image()
                 ->disk('public')
                 ->multiple(),
 

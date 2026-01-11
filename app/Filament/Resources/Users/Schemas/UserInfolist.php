@@ -23,14 +23,6 @@ class UserInfolist
                         ->label('Email')
                         ->placeholder('-'),
 
-                    TextEntry::make('email_verified_at')
-                        ->label('Email Terverifikasi Pada')
-                        ->dateTime()
-                        ->placeholder('-'),
-
-                    IconEntry::make('isActive')
-                        ->label('Aktif')
-                        ->boolean(),
                 ]),
 
             Section::make('Penempatan')

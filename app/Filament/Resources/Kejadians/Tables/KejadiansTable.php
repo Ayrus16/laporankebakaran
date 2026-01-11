@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class KejadiansTable
@@ -24,23 +25,33 @@ class KejadiansTable
                     ->searchable(),
                 TextColumn::make('luasTerbakar')
                     ->numeric()
+                    ->suffix(' m²')
                     ->sortable(),
                 TextColumn::make('tanggalKejadian')
                     ->date()
                     ->sortable(),
-                TextColumn::make('fotoKejadian')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('status')
+                    ->label('Status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'penanganan' => 'warning',
+                        'selesai'    => 'gray',
+                    }),
             ])
             ->filters([
-                //
+                SelectFilter::make('kantor_id') 
+                    ->label('Kantor Terdekat')
+                    ->relationship('kantor', 'namaKantor')
+                    ->searchable()
+                    ->preload(),
+
+                SelectFilter::make('status')
+                    ->label('Status')
+                    ->options([
+                        'penanganan' => 'Penanganan',
+                        'selesai'    => 'Selesai',
+                    ])
+                    ->native(false),
             ])
             ->recordActions([
                 ViewAction::make(),

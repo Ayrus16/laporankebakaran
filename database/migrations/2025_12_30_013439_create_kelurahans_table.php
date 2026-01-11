@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('kelurahans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('idKecamatan')
+                ->constrained('kecamatans')
+                ->restrictOnDelete()
+                ->cascadeOnUpdate();
             $table->string('namaKelurahan');
         });
     }

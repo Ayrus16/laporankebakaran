@@ -50,6 +50,7 @@ class LaporPage extends Component implements HasSchemas
                     SpatieMediaLibraryFileUpload::make('fotoLaporan')
                         ->collection('fotoLaporan')
                         ->disk('public')
+                        ->image()
                         ->multiple(),
 
                         Map::make('location')
@@ -63,17 +64,14 @@ class LaporPage extends Component implements HasSchemas
                             ->draggable(false)
                             ->clickable(false)
                             ->defaultLocation(latitude: -6.914744, longitude: 107.609810)
-
-                            // Jangan simpan "location" ke model (hindari error kolom tidak ada)
                             ->dehydrated(false)
 
-                            // Saat lokasi didapat / marker berubah → isi lat/long
+                            // Update Map saat lokasi di dapat
                             ->afterStateUpdated(function (Set $set, ?array $state): void {
                                 $set('latitude', $state['lat'] ?? null);
                                 $set('longitude', $state['lng'] ?? null);
                             })
 
-                            // Saat edit record → set marker dari data yang tersimpan
                             ->afterStateHydrated(function ($state, $record, Set $set): void {
                                 if (! $record) return;
 
@@ -123,8 +121,7 @@ class LaporPage extends Component implements HasSchemas
         session()->flash('success', 'Laporan berhasil dikirim. Silakan cek laporanmu.');
 
         
-        // redirect ke home 
-        return redirect()->to('/');
+        return redirect()->to('/cek-laporan');
     }
 
     public function render()

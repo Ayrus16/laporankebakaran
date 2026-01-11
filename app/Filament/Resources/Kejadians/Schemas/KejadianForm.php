@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\Kejadians\Schemas;
 
+use App\Models\Kelurahan;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 
@@ -11,6 +13,9 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
+
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
@@ -26,7 +31,34 @@ class KejadianForm
                         ->schema([
                             Section::make('Informasi Kejadian')
                                 ->columns(2)
-                                ->schema([
+                                ->schema([          
+                                    Select::make('idKecamatan')
+                                        ->relationship(name: 'kecamatan', titleAttribute: 'namaKecamatan')
+                                        ->label('Kecamatan')
+                                        ->searchable()
+                                        ->preload()
+                                        ->live() 
+                                        ->afterStateUpdated(function (Set $set) {
+                                            $set('idKelurahan', null);
+                                        })
+                                        ->required(),
+
+                                    Select::make('idKelurahan')
+                                        ->label('Kelurahan')
+                                        ->options(fn (Get $get) => blank($get('idKecamatan'))
+                                            ? []
+                                            : Kelurahan::query()
+                                                ->where('idKecamatan', $get('idKecamatan'))
+                                                ->orderBy('namaKelurahan')
+                                                ->pluck('namaKelurahan', 'id')
+                                                ->toArray()
+                                        )
+                                        ->searchable()
+                                        ->preload()
+                                        ->disabled(fn (Get $get) => blank($get('idKecamatan')))
+                                        ->required(),
+
+
                                     TextInput::make('LokasiKejadian')
                                         ->label('Lokasi Kejadian')
                                         ->required()
@@ -34,6 +66,18 @@ class KejadianForm
 
                                     DatePicker::make('tanggalKejadian')
                                         ->label('Tanggal Kejadian'),
+
+                                    Select::make('status')
+                                        ->label('Status Kejadian')
+                                        ->options([
+                                            'penanganan' => 'Penanganan',
+                                            'selesai'    => 'Selesai',
+                                        ])
+                                        ->default('penanganan')
+                                        ->required()
+                                        ->live(),
+
+
 
                                     Textarea::make('keteranganTambahan')
                                         ->label('Keterangan Tambahan')

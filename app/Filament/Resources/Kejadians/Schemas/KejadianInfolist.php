@@ -33,8 +33,8 @@ class KejadianInfolist
                                 ->columnSpanFull()
                                 ->schema([
                                     SpatieMediaLibraryImageEntry::make('fotoKejadian')
-                                        ->label('Foto Laporan')
-                                        ->collection('fotoLaporan')
+                                        ->label('Foto Kejadian')
+                                        ->collection('fotoKejadian')
                                         ->disk('public')
                                         ->imageHeight(500)
                                         ->square(false)
@@ -59,8 +59,14 @@ class KejadianInfolist
                             Section::make('Kerugian')
                                 ->columns(2)
                                 ->schema([
-                                    TextEntry::make('luasTerbakar')->label('Luas Terbakar')->suffix(' m²')->placeholder('-'),
-                                    TextEntry::make('tafsiranKerugian')->label('Tafsiran Kerugian')->money('IDR')->placeholder('-'),
+                                    TextEntry::make('luasTerbakar')
+                                        ->label('Luas Terbakar')
+                                        ->suffix(' m²')
+                                        ->placeholder('-'),
+                                    TextEntry::make('tafsiranKerugian')
+                                        ->label('Tafsiran Kerugian')
+                                        ->money('IDR')
+                                        ->placeholder('-'),
                                 ]),
                         ]),
                 ]),

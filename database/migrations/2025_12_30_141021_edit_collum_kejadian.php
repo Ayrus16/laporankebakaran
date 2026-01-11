@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('idKelurahan')
                 ->nullable()
                 ->change();
+            $table->string('status')->default('penanganan');
         });
     }
 
