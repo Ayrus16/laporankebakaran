@@ -24,7 +24,7 @@ class LaporPage extends Component implements HasSchemas
     public function mount(): void
     {
         $this->form->fill([
-            'location' => ['lat' => -6.914744, 'lng' => 107.609810], // Default Bandung
+            'location' => ['lat' => -6.2297209, 'lng' => 106.664704], // Default Bandung
         ]);
     }
 
@@ -63,7 +63,7 @@ class LaporPage extends Component implements HasSchemas
 
                             ->draggable(false)
                             ->clickable(false)
-                            ->defaultLocation(latitude: -6.914744, longitude: 107.609810)
+                            ->defaultLocation(latitude: -6.2297209, longitude: 106.664704)
                             ->dehydrated(false)
 
                             // Update Map saat lokasi di dapat
