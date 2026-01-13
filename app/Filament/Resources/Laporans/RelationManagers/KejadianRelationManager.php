@@ -29,7 +29,6 @@ class KejadiansRelationManager extends RelationManager
     {
         return $table
             ->recordTitleAttribute('LokasiKejadian')
-            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('LokasiKejadian')
                     ->label('Lokasi')

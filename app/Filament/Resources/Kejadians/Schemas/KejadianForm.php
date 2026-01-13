@@ -58,7 +58,6 @@ class KejadianForm
                                         ->disabled(fn (Get $get) => blank($get('idKecamatan')))
                                         ->required(),
 
-
                                     TextInput::make('LokasiKejadian')
                                         ->label('Lokasi Kejadian')
                                         ->required()

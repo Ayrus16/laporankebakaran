@@ -35,6 +35,11 @@ class KecamatanResource extends Resource
         return KecamatansTable::configure($table);
     }
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Kecamatan';
+    }
+
     public static function getRelations(): array
     {
         return [

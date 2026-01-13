@@ -31,6 +31,10 @@ class KorbanResource extends Resource
     {
         return KorbanForm::configure($schema);
     }
+    public static function getNavigationLabel(): string
+    {
+        return 'Korban';
+    }
 
     public static function infolist(Schema $schema): Schema
     {

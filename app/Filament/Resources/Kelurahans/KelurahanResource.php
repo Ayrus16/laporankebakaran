@@ -30,6 +30,11 @@ class KelurahanResource extends Resource
         return KelurahanForm::configure($schema);
     }
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Kelurahan';
+    }
+
     public static function table(Table $table): Table
     {
         return KelurahansTable::configure($table);

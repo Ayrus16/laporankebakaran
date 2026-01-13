@@ -37,6 +37,11 @@ class KejadianResource extends Resource
         return KejadianForm::configure($schema);
     }
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Kejadian';
+    }
+
     public static function infolist(Schema $schema): Schema
     {
         return KejadianInfolist::configure($schema);

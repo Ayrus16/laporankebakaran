@@ -42,6 +42,11 @@ class ReguResource extends Resource
         ];
     }
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Regu';
+    }
+
     public static function getPages(): array
     {
         return [

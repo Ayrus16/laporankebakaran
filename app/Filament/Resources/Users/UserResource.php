@@ -49,6 +49,11 @@ class UserResource extends Resource
         ];
     }
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Petugas';
+    }
+
     public static function getPages(): array
     {
         return [

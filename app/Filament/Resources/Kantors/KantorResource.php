@@ -35,6 +35,10 @@ class KantorResource extends Resource
     {
         return KantorsTable::configure($table);
     }
+    public static function getNavigationLabel(): string
+    {
+        return 'Kantor';
+    }
 
     public static function getRelations(): array
     {
